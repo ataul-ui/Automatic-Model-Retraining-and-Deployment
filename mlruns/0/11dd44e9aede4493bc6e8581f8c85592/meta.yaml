@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ataulhaqakbar/Desktop/chatbot_project/mlruns/0/11dd44e9aede4493bc6e8581f8c85592/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 11dd44e9aede4493bc6e8581f8c85592
+run_name: dashing-conch-701
+run_uuid: 11dd44e9aede4493bc6e8581f8c85592
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1687020543239
+status: 1
+tags: []
+user_id: ataulhaqakbar
