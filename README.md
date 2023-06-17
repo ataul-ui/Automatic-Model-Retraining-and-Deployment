@@ -11,6 +11,9 @@ The link will be in the expectation.txt file
 I can add a login that requests username and passwork, so as to 
 simulate a manager logining in
 
+wow I can embed it into my medium article as well
+https://docs.streamlit.io/streamlit-community-cloud/get-started/embed-your-app 
+
 I will provide the username and passwork in this readme file
 
 
