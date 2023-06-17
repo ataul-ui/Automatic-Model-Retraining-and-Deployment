@@ -8,6 +8,10 @@ the manager can decide if the machine is due for repairs or not.
 I'll be using streamlit.io to build the data app for the manager as well
 The link will be in the expectation.txt file
 
+I can add a login that requests username and passwork, so as to 
+simulate a manager logining in
+
+I will provide the username and passwork in this readme file
 
 
 
