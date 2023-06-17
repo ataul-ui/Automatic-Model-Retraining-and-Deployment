@@ -2,7 +2,8 @@
 In this repo I will build a recomendation system that let's the manager know
 if a certain machinery is likely to fail, and the model will update periodically
 as new data appears, (the dataset will be split into initial data trained,
-and next month's data trained)
+and next month's data trained), thus based on the recomendation of the ml system,
+the manager can decide if the machine is due for repairs or not.
 
 
 
