@@ -3,3 +3,5 @@ This project will use docker, fastapi and heroic
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
 Website then look for freelance gigs asap
+
+dataset that was sourced from kaggle is this: https://www.kaggle.com/datasets/dineshmanikanta/machine-failure-predictions?resource=download 
