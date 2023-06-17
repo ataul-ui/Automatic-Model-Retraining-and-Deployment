@@ -1,4 +1,14 @@
 
+In this repo I will build a recomendation system that let's the manager know
+if a certain machinery is likely to fail, and the model will update periodically
+as new data appears, (the dataset will be split into initial data trained,
+and next month's data trained)
+
+
+
+
+
+
 Automatic Model Retraining and Deployment: Build a system that automatically retrains and deploys machine learning models based on predefined triggers or schedules. MLflow can be used for model versioning and management, FastAPI for creating a REST API to trigger the retraining process, Docker for containerization, and Heroku for deployment.
 
 Model Retraining:
