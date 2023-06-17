@@ -18,6 +18,10 @@ I will provide the username and passwork in this readme file
 
 
 
+hmm maybe I don't even need to use fastapi, just need to use
+mlflow, heroku, docker and streamlit
+
+
 Automatic Model Retraining and Deployment: Build a system that automatically retrains and deploys machine learning models based on predefined triggers or schedules. MLflow can be used for model versioning and management, FastAPI for creating a REST API to trigger the retraining process, Docker for containerization, and Heroku for deployment.
 
 Model Retraining:
