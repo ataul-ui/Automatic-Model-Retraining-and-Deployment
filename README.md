@@ -11,6 +11,8 @@ the manager can decide if the machine is due for repairs or not.
 I'll be using streamlit.io to build the data app for the manager as well
 The link will be in the expectation.txt file
 
+^^ I'll use fastapi to create api to connect to streamlit.io
+
 I can add a login that requests username and passwork, so as to 
 simulate a manager logining in
 
@@ -87,3 +89,20 @@ Monitoring and Performance Tracking:
 
 Utilize MLflow to monitor the model's performance over time and track relevant metrics.
 Continuously evaluate the recommendation system's performance and gather feedback from users to improve its effectiveness.
+
+
+To use an ML model deployed in Heroku and streamlit.io together, you can follow these general steps:
+
+Deploy your ML model on Heroku: Set up a web server on Heroku that hosts your trained ML model. This can be done using frameworks such as Flask or FastAPI. Ensure that your model is exposed through a RESTful API endpoint.
+
+Build a Streamlit application: Develop a Streamlit application locally on your machine. Streamlit is a Python library for creating interactive web applications for data visualization and ML model deployment.
+
+Integrate the Heroku API into Streamlit: In your Streamlit application, make HTTP requests to the API endpoint of your ML model deployed on Heroku. You can use libraries like requests or higher-level libraries like pydantic or httpx to handle the API calls and data parsing.
+
+Use the ML model in Streamlit: Retrieve the predictions or results from the API response and display them in your Streamlit application. You can create interactive interfaces, visualizations, or any other desired functionality around your ML model using Streamlit's features.
+
+Deploy the Streamlit application: Once you have integrated the Heroku API into your Streamlit application and tested it locally, you can deploy the Streamlit application using Streamlit sharing or other deployment options like Heroku, AWS, or Google Cloud.
+
+Access the Streamlit application: Once deployed, you can access the Streamlit application through its URL. The application will make requests to the ML model hosted on Heroku in the background and display the results in the Streamlit user interface.
+
+By combining the power of Heroku for hosting your ML model API and Streamlit for building interactive web applications, you can create a seamless integration to leverage your ML model's predictions and provide a user-friendly interface for users to interact with your model.
