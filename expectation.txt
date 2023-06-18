@@ -7,3 +7,5 @@ Website then look for freelance gigs asap
 dataset that was sourced from kaggle is this: https://www.kaggle.com/datasets/dineshmanikanta/machine-failure-predictions?resource=download 
 
 streamlit.io website link: https://streamlit.io/ 
+
+use this as reference: https://www.youtube.com/watch?v=mveN-1r7XiA&ab_channel=AltexSoft 
