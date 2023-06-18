@@ -1,3 +1,6 @@
+I think the title for this project can be "Automated Predictive Maintanance for 
+Industrial Machinery"
+
 
 In this repo I will build a recomendation system that let's the manager know
 if a certain machinery is likely to fail, and the model will update periodically
