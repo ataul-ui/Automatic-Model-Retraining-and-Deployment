@@ -8,6 +8,11 @@ as new data appears, (the dataset will be split into initial data trained,
 and next month's data trained), thus based on the recomendation of the ml system,
 the manager can decide if the machine is due for repairs or not.
 
+talk about the probability of probabilities
+aka probability of 2 out of 100 machines failing
+look at this video for reference:
+https://www.youtube.com/watch?v=ZA4JkHKZM50&ab_channel=3Blue1Brown 
+
 I'll be using streamlit.io to build the data app for the manager as well
 The link will be in the expectation.txt file
 
