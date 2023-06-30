@@ -12,6 +12,8 @@ talk about the probability of probabilities
 aka probability of 2 out of 100 machines failing
 look at this video for reference:
 https://www.youtube.com/watch?v=ZA4JkHKZM50&ab_channel=3Blue1Brown 
+probability density function (PDF) , the stuff you learned in discrete math
+and probability and random processes, can be used in this project
 
 I'll be using streamlit.io to build the data app for the manager as well
 The link will be in the expectation.txt file
