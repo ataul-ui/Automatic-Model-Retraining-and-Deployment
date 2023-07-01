@@ -8,6 +8,9 @@ as new data appears, (the dataset will be split into initial data trained,
 and next month's data trained), thus based on the recomendation of the ml system,
 the manager can decide if the machine is due for repairs or not.
 
+use test driven code development strategy in this project:
+https://medium.com/uk-hydrographic-office/test-driven-development-is-essential-for-good-data-science-heres-why-db7975a03a44 
+
 talk about the probability of probabilities
 aka probability of 2 out of 100 machines failing
 look at this video for reference:
