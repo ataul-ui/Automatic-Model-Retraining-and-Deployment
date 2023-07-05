@@ -21,6 +21,9 @@ and probability and random processes, can be used in this project
 I'll be using streamlit.io to build the data app for the manager as well
 The link will be in the expectation.txt file
 
+^^ actually I don't need to use streamlit.io, I can create a wandb website instead
+look at this video: https://www.youtube.com/watch?v=91HhNtmb0B4 
+
 ^^ I'll use fastapi to create api to connect to streamlit.io
 
 I can add a login that requests username and passwork, so as to 
