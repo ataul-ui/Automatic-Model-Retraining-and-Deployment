@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ataulhaqakbar/Desktop/chatbot_project/mlruns/466749219083602706/3690ea1512194296999656c1f5837d55/artifacts
+end_time: 1688776888819
+entry_point_name: ''
+experiment_id: '466749219083602706'
+lifecycle_stage: active
+run_id: 3690ea1512194296999656c1f5837d55
+run_name: adorable-finch-649
+run_uuid: 3690ea1512194296999656c1f5837d55
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1688776888805
+status: 4
+tags: []
+user_id: ataulhaqakbar

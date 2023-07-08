@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/ataulhaqakbar/Desktop/chatbot_project/mlruns/466749219083602706/006dbdc03d2540fa915c21b74872cd6d/artifacts
+end_time: 1688776565660
+entry_point_name: ''
+experiment_id: '466749219083602706'
+lifecycle_stage: active
+run_id: 006dbdc03d2540fa915c21b74872cd6d
+run_name: intelligent-hog-239
+run_uuid: 006dbdc03d2540fa915c21b74872cd6d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1688776565646
+status: 4
+tags: []
+user_id: ataulhaqakbar
