@@ -1,1 +1,2 @@
-machine failure.csv
+/mlruns
+/wandb
