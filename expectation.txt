@@ -1,5 +1,11 @@
 This project will use docker, fastapi and heroic
 
+
+I'll write the mlflow code in a jupyter environemt
+then I'l convert python script in main.py 
+could use chatgpt to rewrite code into python script
+
+
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
 Website then look for freelance gigs asap
