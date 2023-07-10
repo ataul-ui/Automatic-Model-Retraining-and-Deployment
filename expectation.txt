@@ -8,6 +8,13 @@ first I'll create the fastapi and test it using postman
 then when I feel good about it, I'll deploy it using github actions
 and heoku/render
 
+the post request will ask to give inputs for the stuff,
+and the output will be failure or not
+I can say the manager can test this by giving inputs to it
+since accuracy is 97% this is very reliable.
+I'll talk about data validation and other stuff in a future
+article.
+
 
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
