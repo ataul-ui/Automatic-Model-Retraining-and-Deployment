@@ -4,6 +4,10 @@ This project will use docker, fastapi and heroic
 basically follow the rubric for "Deploying a Machine Learning Model with FastAPI"
 but for this project. Now I'll be able to use github actions here
 
+first I'll create the fastapi and test it using postman
+then when I feel good about it, I'll deploy it using github actions
+and heoku/render
+
 
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
