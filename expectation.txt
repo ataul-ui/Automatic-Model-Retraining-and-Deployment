@@ -15,6 +15,9 @@ since accuracy is 97% this is very reliable.
 I'll talk about data validation and other stuff in a future
 article.
 
+api will be from fastapi, post request testing will be 
+from postman, frondtend will be from streamlit.io
+
 
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
