@@ -1,9 +1,8 @@
 This project will use docker, fastapi and heroic
 
 
-I'll write the mlflow code in a jupyter environemt
-then I'l convert python script in main.py 
-could use chatgpt to rewrite code into python script
+basically follow the rubric for "Deploying a Machine Learning Model with FastAPI"
+but for this project. Now I'll be able to use github actions here
 
 
 Some kind of chatbot, or something else, will be created and hosted 
