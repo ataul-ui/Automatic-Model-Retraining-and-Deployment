@@ -142,6 +142,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
+import mlflow
+import mlflow.sklearn
 
 # Load the dataset
 data = pd.read_csv("machine_failure.csv")
@@ -159,6 +161,8 @@ y = data["Machine failure"]
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+mlflow.start_run()
+
 # Create a logistic regression classifier
 model = LogisticRegression(random_state=42)
 
@@ -171,3 +175,13 @@ y_pred = model.predict(X_test)
 # Calculate accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
+
+# Log the parameters and metrics to MLflow
+mlflow.log_params({"test_size": 0.2})
+mlflow.log_metric("accuracy", accuracy)
+
+# Log the trained model as an artifact
+mlflow.sklearn.log_model(model, "model")
+
+# End the MLflow run
+mlflow.end_run()
