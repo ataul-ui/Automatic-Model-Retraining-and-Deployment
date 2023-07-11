@@ -79,5 +79,19 @@ if __name__ == "__main__":
     # the if button will be on the last step
     if button_sub:
         print(temp)
+        
+    # the variables will go into json message to input the data,
+    #like the json message I pass in to make the model work
+    
+    # example:
+    '''
+    json_mesage = {
+        "UDI": [selected value],
+        "Product ID": [temp],
+        "Type": ["M"],
+    }
+    '''
+    # ^^ something like that, 
+    # test it out soon
     
     uvicorn.run(app, host="0.0.0.0", port=8000)
