@@ -18,6 +18,11 @@ article.
 api will be from fastapi, post request testing will be 
 from postman, frondtend will be from streamlit.io
 
+create a post request sending data to model and getting
+a response on whether device will breakdown or not
+
+after finishing the api stuff rename/move the contents of, app.py to main.py 
+
 
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
