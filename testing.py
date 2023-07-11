@@ -30,7 +30,7 @@ class Model:
         return model
 
 
-def result_return():
+def result_return(data_input):
     
     
     data = pd.read_csv("machine_failure.csv")
@@ -60,7 +60,7 @@ def result_return():
 
     
     # Parse the JSON data
-    data = json.loads(json_data)
+    data = json.loads(data_input)
     # Convert the data to a DataFrame
     df = pd.DataFrame(data)
 
@@ -71,14 +71,14 @@ def result_return():
             df[column] = label_encoder.fit_transform(df[column])
 
     predictions = result.predict(df)
-    want_test = pd.DataFrame([0,1])
+    """want_test = pd.DataFrame([0,1])
     if predictions[0] == want_test[0].all():
         print("success")
     elif predictions[0] == want_test[1].all():
         print("whatever")
     else:
         print("what happened?")
-    print(predictions[0])
+    print(predictions[0])"""
     
     
     
@@ -95,7 +95,7 @@ def result_return():
         
     '''
 
-    return "off"
+    return predictions
 
 
 if __name__ == "__main__":
