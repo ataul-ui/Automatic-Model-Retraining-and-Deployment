@@ -93,5 +93,8 @@ if __name__ == "__main__":
     '''
     # ^^ something like that, 
     # test it out soon
+    # for testing purposes the json payload will be sent to
+    # def root() and postman will send a get request
+    # then I can see what the resultant json message looks like.
     
     uvicorn.run(app, host="0.0.0.0", port=8000)
