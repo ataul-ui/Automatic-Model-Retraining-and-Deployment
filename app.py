@@ -73,7 +73,7 @@ if __name__ == "__main__":
     
     temp = st.radio("what is the device type?", ("M", "L", "H"))
     button_sub = st.button("submit")
-    
+    selected_value = st.selectbox("Select an integer", range(5, 501))
     
     
     # the if button will be on the last step
