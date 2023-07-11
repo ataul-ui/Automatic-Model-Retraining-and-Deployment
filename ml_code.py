@@ -18,6 +18,7 @@ class Model:
         # if I should input the data this way or not
         return 
     
+    #rename this to logistic_regression_model
     def trained_model(self):
         
         label_encoder = LabelEncoder()
