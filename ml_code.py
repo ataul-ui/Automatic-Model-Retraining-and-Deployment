@@ -9,12 +9,44 @@ import mlflow.sklearn
 
 
 
-class model(dataframe, something):
-    def __init__(self, another, again):
-        return again
+class Model:
+    def __init__(self, data): #, air_temp ,process_temp, rot_speed, torque, tool_wear):
+        self.data = data
+        #self.air_temp = air_temp
+        # I'll create all the self instances later, once I figure out
+        # if I should input the data this way or not
+        return 
     
-    def trained_model():
-        return "the model"
+    def trained_model(self):
+        
+        label_encoder = LabelEncoder()
+        for column in self.data.columns:
+            if self.data[column].dtype == "object":
+                self.data[column] = label_encoder.fit_transform(self.data[column])
+                
+        # Split the dataset into features and target
+        X = self.data.drop("Machine failure", axis=1)
+        y = self.data["Machine failure"]
+
+        # Split the data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        mlflow.start_run()
+
+        # Create a logistic regression classifier
+        model = LogisticRegression(random_state=42)
+
+        # Train the model
+        model.fit(X_train, y_train)
+
+        # Make predictions on the test set
+        y_pred = model.predict(X_test)
+
+        # Calculate accuracy
+        accuracy = accuracy_score(y_test, y_pred)
+        #print("Accuracy:", accuracy)
+        
+        return accuracy
 
 
 def give_back_the_response(type, air_temp, proc_temp, rot_temp, torque, tool_wear):
@@ -33,7 +65,14 @@ def test_predictive_maintaincence():
 
     # Load the dataset
     data = pd.read_csv("machine_failure.csv")
-
+    
+    thing = Model(data)
+    result = thing.trained_model()
+    
+    print("Accuracy:", result)
+    
+    return result
+    '''
     # Convert non-numeric columns to numeric using label encoding
     label_encoder = LabelEncoder()
     for column in data.columns:
@@ -73,6 +112,8 @@ def test_predictive_maintaincence():
     mlflow.end_run()
     return accuracy
     
+    '''
+    
     
 if __name__ == "__main__":
-    pytest.main()
+    test_predictive_maintaincence()
