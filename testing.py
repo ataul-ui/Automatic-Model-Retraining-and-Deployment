@@ -13,7 +13,7 @@ class Model:
     def __init__(self, data):
         self.data = data
 
-    def trained_model(self):
+    def logistic_regression_model(self):
         label_encoder = LabelEncoder()
         for column in self.data.columns:
             if self.data[column].dtype == "object":
@@ -25,9 +25,23 @@ class Model:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         model = LogisticRegression(random_state=42, max_iter=10000, solver='saga')
+        # Start MLflow experiment
+        mlflow.set_experiment("Predictive Maintenance")
         model.fit(X_train, y_train)
+        
+        # Evaluate the model
+        accuracy = model.score(X_test, y_test)
+        mlflow.log_metric("accuracy", accuracy)
+    
+        # Log the model artifact
+        mlflow.sklearn.log_model(model, "model")
 
         return model
+    
+    #maybe anomaly detection models
+    #if not just go with random forest models
+    def another_model():
+        return "nothing"
 
 
 def result_return(data_input):
@@ -37,7 +51,7 @@ def result_return(data_input):
     data = pd.read_csv("machine_failure.csv")
 
     thing = Model(data)
-    result = thing.trained_model()
+    result = thing.logistic_regression_model()
     
     
 

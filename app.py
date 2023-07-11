@@ -44,7 +44,7 @@ def preprocess_data(json_data):
 def root():
     return {"message": "something"}
 
-
+#rename the path to /logistic_model   instead of /predict
 @app.post("/predict")
 def predict_failure(data: dict):
     #oh wow this works
