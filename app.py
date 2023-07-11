@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-#from ml_code import test_predictive_maintaincence
+from fastapi.encoders import jsonable_encoder
 from testing import result_return
 from pydantic import BaseModel
 import pandas as pd
@@ -47,8 +47,23 @@ def root():
 
 @app.post("/predict")
 def predict_failure(data: dict):
-    return data
-    '''
+    #oh wow this works
+    #json_compatible_item_data = jsonable_encoder(item)
+    #the json encoder can convert it back into json message
+    #return data
+    json_data = json.dumps(data)
+    #json_compatible_item_data = jsonable_encoder(data)
+    #return json_compatible_item_data
+    
+    the_answer = result_return(json_data)
+    want_test = pd.DataFrame([0,1])
+    if the_answer[0] == want_test[0].all():
+        return "success"
+    elif the_answer[0] == want_test[1].all():
+        return "whatever"
+    else:
+        return "what happened?"'''
+    
     df = preprocess_data(data)
     the_answer = result_return(df)
     

@@ -31,6 +31,7 @@ class Model:
 
 
 def result_return(data_input):
+#def result_return():
     
     
     data = pd.read_csv("machine_failure.csv")
@@ -61,24 +62,45 @@ def result_return(data_input):
     
     # Parse the JSON data
     data = json.loads(data_input)
+    #data = json.loads(json_data)
     # Convert the data to a DataFrame
     df = pd.DataFrame(data)
 
     # Assuming you have a new data point stored in a DataFrame called 'new_data'
-    label_encoder = LabelEncoder()
+    
+    '''label_encoder = LabelEncoder()
     for column in df.columns:
         if df[column].dtype == "object":
-            df[column] = label_encoder.fit_transform(df[column])
+            df[column] = label_encoder.fit_transform(df[column])'''
+    """label_encoder = LabelEncoder()
+    for column in df.columns:
+        if isinstance(df[column][0], list):
+            # Flatten the list and convert it to a single value
+            df[column] = [item[0] for item in df[column]]
+        if df[column].dtype == "object":
+            df[column] = label_encoder.fit_transform(df[column])"""
+    label_encoder = LabelEncoder()
+    for column in df.columns:
+        if isinstance(df[column][0], list):
+            # Flatten the list and convert it to a single value
+            df[column] = [item[0] for item in df[column]]
+        if df[column].dtype == "object":
+            df[column] = label_encoder.fit_transform(df[column].astype(str))
+        else:
+            try:
+                df[column] = label_encoder.fit_transform(df[column])
+            except TypeError:
+                df[column] = label_encoder.fit_transform(df[column].astype(str))
 
     predictions = result.predict(df)
-    """want_test = pd.DataFrame([0,1])
+    '''want_test = pd.DataFrame([0,1])
     if predictions[0] == want_test[0].all():
         print("success")
     elif predictions[0] == want_test[1].all():
         print("whatever")
     else:
         print("what happened?")
-    print(predictions[0])"""
+    print(predictions[0])'''
     
     
     
