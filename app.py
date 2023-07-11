@@ -4,6 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from testing import result_return
 from pydantic import BaseModel
 import pandas as pd
+import streamlit as st
 import requests
 import json
 
@@ -12,23 +13,6 @@ import json
 response = requests.post('/url/to/query/')
 # Assert that the response is successful (status code 200)
 assert response.status_code == 200
-'''
-class Item(BaseModel):
-    
-    '''
-    UDI: [50],
-    "Product ID": ["L47438"],
-    "Type": ["M"],
-    "Air temperature [K]": [298.1],
-    "Process temperature [K]": [309.1],
-    "Rotational speed [rpm]": [1527],
-    "Torque [Nm]": [28.6],
-    "Tool wear [min]": [9],
-    "TWF": ["0"],
-    HDF": ["2"],
-    "PWF": ["0"],
-    "OSF": ["0"],
-    "RNF": ["0"]
 '''
 app = FastAPI()
 
@@ -76,5 +60,24 @@ def predict_failure(data: dict):
         return {"message": "whatever"}
         '''
 
+
 if __name__ == "__main__":
+    st.title("My Streamlit App")
+    st.write("This is a Streamlit app integrated with FastAPI.")
+    # I can pass in the json message through here,
+    # st as the front end will give the message,
+    # then st will print the result given by the model (success) in the front end
+    # so the story is that a technician is measuring the machine and he
+    # is inputing choices from the drop down menu
+    # each new choice will be under a new header giving explaination
+    
+    temp = st.radio("what is the device type?", ("M", "L", "H"))
+    button_sub = st.button("submit")
+    
+    
+    
+    # the if button will be on the last step
+    if button_sub:
+        print(temp)
+    
     uvicorn.run(app, host="0.0.0.0", port=8000)
