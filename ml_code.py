@@ -7,7 +7,20 @@ from sklearn.preprocessing import LabelEncoder
 import mlflow
 import mlflow.sklearn
 
+
+def give_back_the_response(type, air_temp, proc_temp, rot_temp, torque, tool_wear):
+    
+    the_answer = "failure or not"
+    
+    return the_answer
+    
+
+
 def test_predictive_maintaincence():
+    
+    #I think the model code needs to be 
+    #global or become a class, 
+    # so I can use it in other functions
 
     # Load the dataset
     data = pd.read_csv("machine_failure.csv")
