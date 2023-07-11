@@ -10,6 +10,7 @@ response = requests.post('/url/to/query/')
 assert response.status_code == 200
 '''
 
+
 app = FastAPI()
 
 @app.get("/")

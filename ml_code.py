@@ -8,6 +8,15 @@ import mlflow
 import mlflow.sklearn
 
 
+
+class model(dataframe, something):
+    def __init__(self, another, again):
+        return again
+    
+    def trained_model():
+        return "the model"
+
+
 def give_back_the_response(type, air_temp, proc_temp, rot_temp, torque, tool_wear):
     
     the_answer = "failure or not"
