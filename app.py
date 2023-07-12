@@ -35,35 +35,38 @@ def predict_failure(data: dict):
     #json_compatible_item_data = jsonable_encoder(item)
     #the json encoder can convert it back into json message
     #return data
+
+    
     json_data = json.dumps(data)
     #json_compatible_item_data = jsonable_encoder(data)
     #return json_compatible_item_data
     
     the_answer = result_return(json_data)
+    senting = the_answer[0]
+    #json_compatible_item_data = jsonable_encoder(senting)
+    print(senting)
+    
+    
     want_test = pd.DataFrame([0,1])
-    if the_answer[0] == want_test[0].all():
+    '''
+    print(want_test[0][1])
+    print("anoth")
+    return "nothig"
+    
+    '''
+    if the_answer[0] == want_test[0][0]:
         return "success"
-    elif the_answer[0] == want_test[1].all():
+    elif the_answer[0] == want_test[0][1]:
         return "whatever"
     else:
-        return "what happened?"'''
+        return "what happened?" 
     
-    df = preprocess_data(data)
-    the_answer = result_return(df)
-    
-    want_test = pd.DataFrame([0,1])
-    if the_answer[0] == want_test[0].all():
-        return {"message": "success"}
-    elif the_answer[0] == want_test[1].all():
-        return {"message": "whatever"}
-    else:
-        return {"message": "whatever"}
-        '''
 
 
 if __name__ == "__main__":
     
-    
+    # for now I will keep streamlit comented out:
+    '''
     
     st.title("My Streamlit App")
     st.write("This is a Streamlit app integrated with FastAPI.")
@@ -98,51 +101,7 @@ if __name__ == "__main__":
         send_to_predict = predict_failure(json_message)
         print(send_to_predict)
         #print(device_type)
-        
+        '''
     
     
-    
-    # the variables will go into json message to input the data,
-    #like the json message I pass in to make the model work
-    
-    
-    
-    # example:
-    '''
-    json_mesage = {
-        "UDI": [selected value],
-        "Product ID": [temp],
-        "Type": ["M"]
-    }
-    '''
-    '''
-    temp = 56
-    # ^^ something like that, 
-    # test it out soon
-    # for testing purposes the json payload will be sent to
-    # def root() and postman will send a get request
-    # then I can see what the resultant json message looks like.
-    
-    example_message = {
-        "UDI": [temp],
-        "Product ID": ["L47438"],
-        "Type": ["M"],
-        "Air temperature [K]": [298.1],
-        "Process temperature [K]": [309.1],
-        "Rotational speed [rpm]": [1527],
-        "Torque [Nm]": [28.6],
-        "Tool wear [min]": [9],
-        "TWF": ["0"],
-        "HDF": ["2"],
-        "PWF": ["0"],
-        "OSF": ["0"],
-        "RNF": ["0"]
-    }
-    
-    # for testing purposes see if this runs or not
-    # look at the terminal if desired object is there
-    
-    whats_this = root(example_message)
-    print(whats_this)
-    '''
     uvicorn.run(app, host="0.0.0.0", port=8000)
