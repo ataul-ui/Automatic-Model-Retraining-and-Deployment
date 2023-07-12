@@ -72,28 +72,39 @@ if __name__ == "__main__":
     # is inputing choices from the drop down menu
     # each new choice will be under a new header giving explaination
     
-    temp = st.radio("what is the device type?", ("M", "L", "H"))
+    device_type = st.radio("what is the device type?", ("M", "L", "H"))
+    air_temp = st.selectbox("What is the air temp?", range(5, 501))
+    process_temp = st.selectbox("What is the process temp?", range(5, 501))
+    rot_speed = st.selectbox("What is the rot speed?", range(5, 501))
+    torque = st.selectbox("What is the torque?", range(5, 501))
+    tool_wear = st.selectbox("What is the tool wear?", range(5, 501))
     button_sub = st.button("submit")
-    selected_value = st.selectbox("Select an integer", range(5, 501))
     
     
     # the if button will be on the last step
     if button_sub:
-        print(temp)
+        json_message{}
         
+        send_to_root = root()
+        print(send_to_root)
+        print(device_type)
+        
+    '''
     # the variables will go into json message to input the data,
     #like the json message I pass in to make the model work
     
-    '''
+    
     
     # example:
     '''
     json_mesage = {
         "UDI": [selected value],
         "Product ID": [temp],
-        "Type": ["M"],
+        "Type": ["M"]
     }
     '''
+    
+    temp = 56
     # ^^ something like that, 
     # test it out soon
     # for testing purposes the json payload will be sent to
@@ -101,7 +112,7 @@ if __name__ == "__main__":
     # then I can see what the resultant json message looks like.
     
     example_message = {
-        "UDI": [50],
+        "UDI": [temp],
         "Product ID": ["L47438"],
         "Type": ["M"],
         "Air temperature [K]": [298.1],
@@ -114,8 +125,12 @@ if __name__ == "__main__":
         "PWF": ["0"],
         "OSF": ["0"],
         "RNF": ["0"]
-}
+    }
     
-    root(example_message)
+    # for testing purposes see if this runs or not
+    # look at the terminal if desired object is there
+    
+    whats_this = root(example_message)
+    print(whats_this)
     
     uvicorn.run(app, host="0.0.0.0", port=8000)

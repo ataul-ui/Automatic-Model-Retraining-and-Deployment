@@ -72,6 +72,9 @@ def result_return(data_input):
         "RNF": ["0"]
     }
     '''
+    
+    # do feature engineering by reomoving all the unecessary
+    # training parameter such as twf hdf, uid, etc
 
     
     # Parse the JSON data
