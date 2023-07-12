@@ -31,7 +31,9 @@ class Model:
         
         # Evaluate the model
         accuracy = model.score(X_test, y_test)
+        second_accuracy = model.score(X_train, y_train)
         mlflow.log_metric("accuracy", accuracy)
+        mlflow.log_metric("second_accuracy", second_accuracy)
     
         # Log the model artifact
         mlflow.sklearn.log_model(model, "model")
@@ -40,7 +42,7 @@ class Model:
     
     #maybe anomaly detection models
     #if not just go with random forest models
-    def another_model():
+    def random_forrest_model():
         return "nothing"
 
 
