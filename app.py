@@ -83,6 +83,12 @@ if __name__ == "__main__":
     rot_speed = st.selectbox("What is the rot speed?", range(5, 501))
     torque = st.selectbox("What is the torque?", range(5, 501))
     tool_wear = st.selectbox("What is the tool wear?", range(5, 501))
+    
+    #another question could be a st.radio:
+    #What model do you want to test this on, that option could be sent to 
+    #the testing.py, 
+    #actually the model training stuff will only be done in testing.py model class,
+    # but the model being called will only pass through def model_version()
     button_sub = st.button("submit")
     
     

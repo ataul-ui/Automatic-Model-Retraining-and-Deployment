@@ -42,8 +42,14 @@ class Model:
     
     #maybe anomaly detection models
     #if not just go with random forest models
-    def random_forrest_model():
+    def random_forrest_model(self):
         return "nothing"
+    
+    def model_version(self, model_name):
+        #this function should be called so that 
+        # look at the comment written on app.py
+        #above the if button_sub statement on what to do
+        return "noting currently"
 
 
 def result_return(data_input):
