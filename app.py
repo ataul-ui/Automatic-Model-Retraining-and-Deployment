@@ -62,7 +62,9 @@ def predict_failure(data: dict):
 
 
 if __name__ == "__main__":
-    '''
+    
+    
+    
     st.title("My Streamlit App")
     st.write("This is a Streamlit app integrated with FastAPI.")
     # I can pass in the json message through here,
@@ -83,13 +85,23 @@ if __name__ == "__main__":
     
     # the if button will be on the last step
     if button_sub:
-        json_message{}
+        json_message = {
+            "Type": [device_type],
+            "Air temperature [K]": [air_temp],
+            "Process temperature [K]": [process_temp],
+            "Rotational speed [rpm]": [rot_speed],
+            "Torque [Nm]": [torque],
+            "Tool wear [min]": [tool_wear]
+        }
         
-        send_to_root = root()
-        print(send_to_root)
-        print(device_type)
+        #send_to_root = root(json_message)
+        send_to_predict = predict_failure(json_message)
+        print(send_to_predict)
+        #print(device_type)
         
-    '''
+    
+    
+    
     # the variables will go into json message to input the data,
     #like the json message I pass in to make the model work
     
@@ -103,7 +115,7 @@ if __name__ == "__main__":
         "Type": ["M"]
     }
     '''
-    
+    '''
     temp = 56
     # ^^ something like that, 
     # test it out soon
@@ -132,5 +144,5 @@ if __name__ == "__main__":
     
     whats_this = root(example_message)
     print(whats_this)
-    
+    '''
     uvicorn.run(app, host="0.0.0.0", port=8000)

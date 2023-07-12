@@ -19,7 +19,7 @@ class Model:
             if self.data[column].dtype == "object":
                 self.data[column] = label_encoder.fit_transform(self.data[column])
 
-        X = self.data.drop("Machine failure", axis=1)
+        X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF"], axis=1)
         y = self.data["Machine failure"]
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
