@@ -25,8 +25,8 @@ def preprocess_data(json_data):
     return df
 
 @app.get("/")
-def root():
-    return {"message": "something"}
+def root(data: dict):
+    return data
 
 #rename the path to /logistic_model   instead of /predict
 @app.post("/predict")
@@ -62,6 +62,7 @@ def predict_failure(data: dict):
 
 
 if __name__ == "__main__":
+    '''
     st.title("My Streamlit App")
     st.write("This is a Streamlit app integrated with FastAPI.")
     # I can pass in the json message through here,
@@ -83,6 +84,8 @@ if __name__ == "__main__":
     # the variables will go into json message to input the data,
     #like the json message I pass in to make the model work
     
+    '''
+    
     # example:
     '''
     json_mesage = {
@@ -96,5 +99,23 @@ if __name__ == "__main__":
     # for testing purposes the json payload will be sent to
     # def root() and postman will send a get request
     # then I can see what the resultant json message looks like.
+    
+    example_message = {
+        "UDI": [50],
+        "Product ID": ["L47438"],
+        "Type": ["M"],
+        "Air temperature [K]": [298.1],
+        "Process temperature [K]": [309.1],
+        "Rotational speed [rpm]": [1527],
+        "Torque [Nm]": [28.6],
+        "Tool wear [min]": [9],
+        "TWF": ["0"],
+        "HDF": ["2"],
+        "PWF": ["0"],
+        "OSF": ["0"],
+        "RNF": ["0"]
+}
+    
+    root(example_message)
     
     uvicorn.run(app, host="0.0.0.0", port=8000)
