@@ -23,7 +23,8 @@ a response on whether device will breakdown or not
 
 after finishing the api stuff rename/move the contents of, app.py to main.py 
 
-now I'll move on to api testing
+I'll GENERATE SYNTHETIC DATA FOR THE DATASET USING THIS WEBSITE:
+https://gretel.ai
 
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
