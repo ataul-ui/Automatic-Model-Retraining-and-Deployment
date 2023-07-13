@@ -8,7 +8,9 @@ import mlflow
 import mlflow.sklearn
 import json
 
-
+#LOOK AT INTRO TO AI PROJECT I DID
+#TWO YEARS AGO ON HOW TO WRITE ML MODELS
+#USING CLASSES
 class Model:
     def __init__(self, data):
         self.data = data
