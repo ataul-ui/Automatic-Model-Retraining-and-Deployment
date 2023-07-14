@@ -12,14 +12,36 @@ import json
 #TWO YEARS AGO ON HOW TO WRITE ML MODELS
 #USING CLASSES
 class Model:
+    
+    trained_or_not = False
+    
     def __init__(self, data):
         self.data = data
+        self.trained_or_not = False
+    
+    def pre_processing(self):
+        return "nothing right now"
+
+    def training(self):
+        return "I might get rid of this one, btw this should return the model"
+    
+    def logistic_model_result(self):
+        if self.__class__.trained_or_not:
+            return "return the model result"
+        else:
+            self.__class__.trained_or_not = True
+            return "train the model, then return the result"
 
     def logistic_regression_model(self):
         label_encoder = LabelEncoder()
         for column in self.data.columns:
             if self.data[column].dtype == "object":
                 self.data[column] = label_encoder.fit_transform(self.data[column])
+        #use this as reference for feature engineering
+        # and xgboost building:
+        # https://www.kaggle.com/code/yantxx/xgboost-binary-classifier-machine-failure
+        #do preprocessig on the data, if machine type 
+        # is not M or L, then make it other
 
         X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF"], axis=1)
         y = self.data["Machine failure"]

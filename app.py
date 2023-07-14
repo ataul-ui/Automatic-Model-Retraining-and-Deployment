@@ -107,6 +107,8 @@ if __name__ == "__main__":
         send_to_predict = predict_failure(json_message)
         print(send_to_predict)
         #print(device_type)
+        
+        retrain_the_model = 0
         '''
     
     
