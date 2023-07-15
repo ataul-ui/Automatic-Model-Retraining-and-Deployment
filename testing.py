@@ -170,4 +170,17 @@ def result_return(data_input):
 
 
 if __name__ == "__main__":
-    result_return()
+    json_code = {
+        "Type": ["L"],
+        "Air temperature [K]": [55],
+        "Process temperature [K]": [8787.1],
+        "Rotational speed [rpm]": [20],
+        "Torque [Nm]": [28.6],
+        "Tool wear [min]": [9]
+    }
+    
+    json_data = json.dumps(json_code)
+    result_return(json_data)
+    
+    #basically copy the entirety of 
+    #def predict_failure to this place
