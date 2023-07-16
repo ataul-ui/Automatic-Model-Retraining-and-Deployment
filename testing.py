@@ -14,16 +14,53 @@ import json
 class Model:
     
     trained_or_not = False
-    
+    search_space = {
+        "stuff here, look at the tutorial",
+        "install hyperopt for this"
+    }
+    # do hyperopt bayseyan optimization
+    # follow that video tutorial with the 
+    # robotic voice
     def __init__(self, data):
         self.data = data
         self.trained_or_not = False
     
     def pre_processing(self):
+        label_encoder = LabelEncoder()
+        for column in self.data.columns:
+            if self.data[column].dtype == "object":
+                self.data[column] = label_encoder.fit_transform(self.data[column])
+        #use this as reference for feature engineering
+        # and xgboost building:
+        # https://www.kaggle.com/code/yantxx/xgboost-binary-classifier-machine-failure
+        #do preprocessig on the data, if machine type 
+        # is not M or L, then make it other
+
+        X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF"], axis=1)
+        y = self.data["Machine failure"]
+
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
         return "nothing right now"
 
     def training(self):
-        return "I might get rid of this one, btw this should return the model"
+        
+        model = LogisticRegression(random_state=42, max_iter=10000, solver='saga')
+        # Start MLflow experiment
+        mlflow.set_experiment("Predictive Maintenance")
+        model.fit(self.X_train, self.y_train)
+        
+        # Evaluate the model
+        accuracy = model.score(self.X_test, self.y_test)
+        second_accuracy = model.score(self.X_train, self.y_train)
+        mlflow.log_metric("accuracy", accuracy)
+        mlflow.log_metric("second_accuracy", second_accuracy)
+    
+        # Log the model artifact
+        mlflow.sklearn.log_model(model, "model")
+        return model
+    
+    def objective(self):
+        return "this is because it is good"
     
     def logistic_model_result(self):
         if self.__class__.trained_or_not:
@@ -31,7 +68,7 @@ class Model:
         else:
             self.__class__.trained_or_not = True
             return "train the model, then return the result"
-
+    '''
     def logistic_regression_model(self):
         label_encoder = LabelEncoder()
         for column in self.data.columns:
@@ -63,6 +100,7 @@ class Model:
         mlflow.sklearn.log_model(model, "model")
 
         return model
+    '''
     
     #maybe anomaly detection models
     #if not just go with random forest models
@@ -83,7 +121,8 @@ def result_return(data_input):
     data = pd.read_csv("machine_failure.csv")
 
     thing = Model(data)
-    result = thing.logistic_regression_model()
+    thing.pre_processing()
+    result = thing.training()
     
     
 
@@ -180,7 +219,20 @@ if __name__ == "__main__":
     }
     
     json_data = json.dumps(json_code)
-    result_return(json_data)
+    the_answer = result_return(json_data)
+    want_test = pd.DataFrame([0,1])
+    '''
+    print(want_test[0][1])
+    print("anoth")
+    return "nothig"
+    
+    '''
+    if the_answer[0] == want_test[0][0]:
+        print("success")
+    elif the_answer[0] == want_test[0][1]:
+        print("whatever") 
+    else:
+        print("what happened?")
     
     #basically copy the entirety of 
     #def predict_failure to this place
