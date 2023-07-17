@@ -4,6 +4,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
+from xgboost import XGBClassifier
+from sklearn.metrics import precision_recall_fscore_support as score
+
+# Hyperparameter tuning
+from sklearn.model_selection import StratifiedKFold, cross_val_score, GridSearchCV, RandomizedSearchCV
+from hyperopt import tpe, STATUS_OK, Trials, hp, fmin, STATUS_OK, space_eval
 import mlflow
 import mlflow.sklearn
 import json
@@ -14,9 +20,13 @@ import json
 class Model:
     
     instance_created = False
-    search_space = {
-        "stuff here, look at the tutorial",
-        "install hyperopt for this"
+    space = {
+    'learning_rate': hp.choice('learning_rate', [0.0001,0.001, 0.01, 0.1, 1]),
+    'max_depth' : hp.choice('max_depth', range(3,21,3)),
+    'gamma' : hp.choice('gamma', [i/10.0 for i in range(0,5)]),
+    'colsample_bytree' : hp.choice('colsample_bytree', [i/10.0 for i in range(3,10)]),     
+    'reg_alpha' : hp.choice('reg_alpha', [1e-5, 1e-2, 0.1, 1, 10, 100]), 
+    'reg_lambda' : hp.choice('reg_lambda', [1e-5, 1e-2, 0.1, 1, 10, 100])
     }
     # do hyperopt bayseyan optimization
     # follow that video tutorial with the 
@@ -59,9 +69,21 @@ class Model:
         # Log the model artifact
         mlflow.sklearn.log_model(model, "model")
         return model
-    
+    '''
     def objective(self):
-        return "this is because it is good"
+        xgboost = XGBClassifier(seed=0, **params)
+        score = cross_val_score(estimator=xgboost, 
+                                X=X_train_transformed, 
+                                y=y_train, 
+                                cv=kfold, 
+                                scoring='recall', 
+                                n_jobs=-1).mean()
+
+        # Loss is negative score
+        loss = - score
+
+        # Dictionary with information for evaluation
+        return {'loss': loss, 'params': params, 'status': STATUS_OK}'''
     
     def logistic_model_result(self):
         if self.__class__.trained_or_not:
