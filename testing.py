@@ -13,7 +13,7 @@ import json
 #USING CLASSES
 class Model:
     
-    trained_or_not = False
+    instance_created = False
     search_space = {
         "stuff here, look at the tutorial",
         "install hyperopt for this"
@@ -23,7 +23,7 @@ class Model:
     # robotic voice
     def __init__(self, data):
         self.data = data
-        self.trained_or_not = False
+        Model.instance_created = True
     
     def pre_processing(self):
         label_encoder = LabelEncoder()
@@ -40,9 +40,10 @@ class Model:
         y = self.data["Machine failure"]
 
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-        return "nothing right now"
 
     def training(self):
+        
+        self.pre_processing()
         
         model = LogisticRegression(random_state=42, max_iter=10000, solver='saga')
         # Start MLflow experiment
@@ -121,7 +122,7 @@ def result_return(data_input):
     data = pd.read_csv("machine_failure.csv")
 
     thing = Model(data)
-    thing.pre_processing()
+    #result = thing.pre_processing()
     result = thing.training()
     
     
@@ -217,6 +218,12 @@ if __name__ == "__main__":
         "Torque [Nm]": [28.6],
         "Tool wear [min]": [9]
     }
+    
+    if Model.instance_created:
+        print("An instance of MyClass has already been created")
+    else:
+        print("No instance of MyClass has been created yet")
+
     
     json_data = json.dumps(json_code)
     the_answer = result_return(json_data)
