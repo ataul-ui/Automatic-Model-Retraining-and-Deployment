@@ -20,14 +20,14 @@ import json
 class Model:
     
     instance_created = False
-    space = {
+    '''space = {
     'learning_rate': hp.choice('learning_rate', [0.0001,0.001, 0.01, 0.1, 1]),
     'max_depth' : hp.choice('max_depth', range(3,21,3)),
     'gamma' : hp.choice('gamma', [i/10.0 for i in range(0,5)]),
     'colsample_bytree' : hp.choice('colsample_bytree', [i/10.0 for i in range(3,10)]),     
     'reg_alpha' : hp.choice('reg_alpha', [1e-5, 1e-2, 0.1, 1, 10, 100]), 
     'reg_lambda' : hp.choice('reg_lambda', [1e-5, 1e-2, 0.1, 1, 10, 100])
-    }
+    }'''
     # do hyperopt bayseyan optimization
     # follow that video tutorial with the 
     # robotic voice
@@ -55,7 +55,49 @@ class Model:
         
         self.pre_processing()
         
-        model = LogisticRegression(random_state=42, max_iter=10000, solver='saga')
+        space = {
+        'C': hp.loguniform('C', low=-3, high=3),
+        'penalty': hp.choice('penalty', ['l2', 'none', 'elasticnet']),
+        'fit_intercept': hp.choice('fit_intercept', [True, False])
+        }
+
+        def objective(params):
+            # Extract the 'C' value from the choice index
+            params['C'] = float(params['C'])
+            model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **params)
+            model.fit(self.X_train, self.y_train)
+            accuracy = model.score(self.X_test, self.y_test)
+            return -accuracy  # Negative accuracy for minimization
+
+        best = fmin(
+            fn=objective,
+            space=space,
+            algo=tpe.suggest,
+            max_evals=20
+        )
+
+        # Retrieve the best hyperparameters
+        best_model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **best)
+        best_model.fit(self.X_train, self.y_train)
+
+        # Evaluate the best model
+        accuracy = best_model.score(self.X_test, self.y_test)
+        second_accuracy = best_model.score(self.X_train, self.y_train)
+
+        # Start MLflow experiment
+        mlflow.set_experiment("Predictive Maintenance")
+        with mlflow.start_run():
+            # Log the best hyperparameters
+            mlflow.log_params(best)
+            # Log the model artifact
+            mlflow.sklearn.log_model(best_model, "model")
+            # Log the evaluation metrics
+            mlflow.log_metric("accuracy", accuracy)
+            mlflow.log_metric("second_accuracy", second_accuracy)
+
+        return best_model
+        
+        '''model = LogisticRegression(random_state=42, max_iter=10000, solver='saga')
         # Start MLflow experiment
         mlflow.set_experiment("Predictive Maintenance")
         model.fit(self.X_train, self.y_train)
@@ -68,7 +110,7 @@ class Model:
     
         # Log the model artifact
         mlflow.sklearn.log_model(model, "model")
-        return model
+        return model'''
     '''
     def objective(self):
         xgboost = XGBClassifier(seed=0, **params)
