@@ -26,6 +26,8 @@ after finishing the api stuff rename/move the contents of, app.py to main.py
 I'll GENERATE SYNTHETIC DATA FOR THE DATASET USING THIS WEBSITE:
 https://gretel.ai
 
+blach blah blah
+
 Some kind of chatbot, or something else, will be created and hosted 
 In heroku, after this project is finished, I will finish up my 
 Website then look for freelance gigs asap
