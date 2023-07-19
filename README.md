@@ -1,3 +1,29 @@
-Will write the tutorial for this project
+# predictive-maintainance-for-a-smart-factory
 
-basically copy the readme.md from the early alzhimers project I did
+
+
+## Requirements
+Make sure you have conda installed.
+
+
+
+
+
+## Conda instructions
+- To start the conda environment
+
+``` bash
+conda activate machine
+```
+
+- To close the conda environment
+``` bash
+conda deactivate
+```
+
+## The streamlit app
+- To start the streamlit app
+```bash
+streamlit run app.py
+```
+
