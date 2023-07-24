@@ -44,7 +44,7 @@ class Model:
         #do preprocessig on the data, if machine type 
         # is not M or L, then make it other
 
-        X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF"], axis=1)
+        X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF", "Type"], axis=1)
         y = self.data["Machine failure"]
 
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -54,8 +54,10 @@ class Model:
         self.pre_processing()
         
         space = {
-        'C': hp.loguniform('C', low=-3, high=3),
-        'penalty': hp.choice('penalty', ['l2', 'none', 'elasticnet']),
+        #'C': hp.loguniform('C', low=-3, high=3),
+        'C': hp.uniform('C', 0.01, 10),
+        'penalty': hp.choice('penalty', ['l1', 'l2', 'elasticnet', 'none']),
+        'l1_ratio': hp.uniform('l1_ratio', 0, 1),
         'fit_intercept': hp.choice('fit_intercept', [True, False])
         }
 
@@ -189,23 +191,6 @@ def result_return(data_input):
     
     
 
-    json_data = '''
-    {
-        "UDI": [50],
-        "Product ID": ["L47438"],
-        "Type": ["M"],
-        "Air temperature [K]": [298.1],
-        "Process temperature [K]": [309.1],
-        "Rotational speed [rpm]": [1527],
-        "Torque [Nm]": [28.6],
-        "Tool wear [min]": [9],
-        "TWF": ["0"],
-        "HDF": ["2"],
-        "PWF": ["0"],
-        "OSF": ["0"],
-        "RNF": ["0"]
-    }
-    '''
     
     # do feature engineering by reomoving all the unecessary
     # training parameter such as twf hdf, uid, etc
@@ -273,7 +258,6 @@ def result_return(data_input):
 
 if __name__ == "__main__":
     json_code = {
-        "Type": ["L"],
         "Air temperature [K]": [55],
         "Process temperature [K]": [8787.1],
         "Rotational speed [rpm]": [20],
