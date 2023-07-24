@@ -3,7 +3,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import LabelEncoder
-from xgboost import XGBClassifier
 from sklearn.metrics import precision_recall_fscore_support as score
 
 # Hyperparameter tuning

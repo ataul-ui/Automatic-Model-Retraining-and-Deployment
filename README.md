@@ -23,7 +23,7 @@ conda deactivate
 
 ## The streamlit app
 
-To access the web deployed version, please create a pull request to put the data access and username in records.txt file; once the pull request has completed go to this link to access the site:
+To access the web deployed version, please create a pull request on production branch to put your username and date access in records.txt file; once the pull request has completed go to this link to access the site:
 ```
 https://smart-factory-form.onrender.com
 ```
