@@ -25,7 +25,7 @@ after finishing the api stuff rename/move the contents of, app.py to main.py
 
 I'll GENERATE SYNTHETIC DATA FOR THE DATASET USING THIS WEBSITE:
 https://gretel.ai
-
+sds
 blach blah blah
 
 Some kind of chatbot, or something else, will be created and hosted 
