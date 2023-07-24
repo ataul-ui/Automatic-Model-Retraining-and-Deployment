@@ -22,8 +22,16 @@ conda deactivate
 ```
 
 ## The streamlit app
-- To start the streamlit app
+
+To access the web deployed version, please create a pull request to put the data access and username in records.txt file; once the pull request has completed go to this link to access the site:
+```
+https://smart-factory-form.onrender.com
+```
+
+- To start the streamlit on local app, clone this repository then run these command in your terminal
 ```bash
+conda activate your_environment_name
+conda install --file requirements.txt
 streamlit run app.py
 ```
 
