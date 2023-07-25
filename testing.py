@@ -52,7 +52,7 @@ class Model:
     def training(self):
         
         self.pre_processing()
-        
+        '''
         space = {
         #'C': hp.loguniform('C', low=-3, high=3),
         'C': hp.uniform('C', 0.01, 10),
@@ -60,25 +60,38 @@ class Model:
         'l1_ratio': hp.uniform('l1_ratio', 0, 1),
         #'solver': hp.choice('solver', ['newton-cg', 'lbfgs', 'sag', 'saga']),
         'fit_intercept': hp.choice('fit_intercept', [True, False])
+        }'''
+        space = {
+            'warm_start': hp.choice('warm_start', [True, False]),
+            'fit_intercept': hp.choice('fit_intercept', [True, False]),
+            'tol': hp.uniform('tol',0.00001,000.1),
+            'C': hp.uniform('C', 0.05, 3),
+            'solver': hp.choice('solver', ['newton-cg', 'lbfgs', 'sag', 'saga']),
+            'max_iter': hp.choice('max_iter', range(100, 1000))
         }
 
         def objective(params):
             # Extract the 'C' value from the choice index
-            params['C'] = float(params['C'])
-            model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **params)
+            #params['C'] = float(params['C'])
+            #model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **params)
+            model = LogisticRegression(**params)
             model.fit(self.X_train, self.y_train)
             accuracy = model.score(self.X_test, self.y_test)
             return -accuracy  # Negative accuracy for minimization
 
+        bayes_trial = Trials()
         best = fmin(
             fn=objective,
             space=space,
             algo=tpe.suggest,
-            max_evals=20
+            max_evals=50,
+            trials=bayes_trial
         )
-
+        # Convert the 'solver' choice back to string
+        best['solver'] = ['newton-cg', 'lbfgs', 'sag', 'saga'][best['solver']]
         # Retrieve the best hyperparameters
-        best_model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **best)
+        #best_model = LogisticRegression(random_state=42, max_iter=10000, solver='saga', **best)
+        best_model = LogisticRegression(**best)
         best_model.fit(self.X_train, self.y_train)
 
         # Evaluate the best model
