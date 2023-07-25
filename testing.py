@@ -58,6 +58,7 @@ class Model:
         'C': hp.uniform('C', 0.01, 10),
         'penalty': hp.choice('penalty', ['l1', 'l2', 'elasticnet', 'none']),
         'l1_ratio': hp.uniform('l1_ratio', 0, 1),
+        #'solver': hp.choice('solver', ['newton-cg', 'lbfgs', 'sag', 'saga']),
         'fit_intercept': hp.choice('fit_intercept', [True, False])
         }
 
