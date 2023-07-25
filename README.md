@@ -1,5 +1,5 @@
 # predictive-maintainance-for-a-smart-factory
-
+This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon.
 
 
 ## Requirements
@@ -8,18 +8,6 @@ Make sure you have conda installed. If you want to deploy this app on the web ma
 
 
 
-
-## Conda instructions
-- To start the conda environment
-
-``` bash
-conda activate machine
-```
-
-- To close the conda environment
-``` bash
-conda deactivate
-```
 
 ## Streamlit web app
 
