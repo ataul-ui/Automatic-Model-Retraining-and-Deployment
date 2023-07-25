@@ -1,19 +1,13 @@
 from fastapi import FastAPI
 import uvicorn
 from fastapi.encoders import jsonable_encoder
-from testing import result_return
+from ml_model import result_return
 from pydantic import BaseModel
 import pandas as pd
 import streamlit as st
 import requests
 import json
 
-'''
-
-response = requests.post('/url/to/query/')
-# Assert that the response is successful (status code 200)
-assert response.status_code == 200
-'''
 app = FastAPI()
 
 def preprocess_data(json_data):
@@ -31,15 +25,10 @@ def root(data: dict):
 #rename the path to /logistic_model   instead of /predict
 @app.post("/predict")
 def predict_failure(data: dict):
-    #oh wow this works
-    #json_compatible_item_data = jsonable_encoder(item)
-    #the json encoder can convert it back into json message
-    #return data
 
     
     json_data = json.dumps(data)
-    #json_compatible_item_data = jsonable_encoder(data)
-    #return json_compatible_item_data
+
     
     the_answer = result_return(json_data)
     senting = the_answer[0]
@@ -48,27 +37,21 @@ def predict_failure(data: dict):
     
     
     want_test = pd.DataFrame([0,1])
-    '''
-    print(want_test[0][1])
-    print("anoth")
-    return "nothig"
-    
-    '''
     if the_answer[0] == want_test[0][0]:
-        return "success"
+        return "machine will fail"
     elif the_answer[0] == want_test[0][1]:
-        return "whatever"
+        return "machine will continue to work"
     else:
-        return "what happened?" 
+        return "There is an error somewhere in the code" 
     
 
 
 if __name__ == "__main__":
     
     # for now I will keep streamlit comented out:
-    '''
     
-    st.title("My Streamlit App")
+    
+    st.title("Predictive Maintainance Form")
     st.write("This is a Streamlit app integrated with FastAPI.")
     # I can pass in the json message through here,
     # st as the front end will give the message,
@@ -95,7 +78,7 @@ if __name__ == "__main__":
     # the if button will be on the last step
     if button_sub:
         json_message = {
-            "Type": [device_type],
+            #"Type": [device_type],
             "Air temperature [K]": [air_temp],
             "Process temperature [K]": [process_temp],
             "Rotational speed [rpm]": [rot_speed],
@@ -107,9 +90,10 @@ if __name__ == "__main__":
         send_to_predict = predict_failure(json_message)
         print(send_to_predict)
         #print(device_type)
+        st.write(send_to_predict)
         
         retrain_the_model = 0
-        '''
+        
     
     
     uvicorn.run(app, host="0.0.0.0", port=8000)

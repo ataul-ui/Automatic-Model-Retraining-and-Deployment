@@ -18,17 +18,6 @@ import json
 class Model:
     
     instance_created = False
-    '''space = {
-    'learning_rate': hp.choice('learning_rate', [0.0001,0.001, 0.01, 0.1, 1]),
-    'max_depth' : hp.choice('max_depth', range(3,21,3)),
-    'gamma' : hp.choice('gamma', [i/10.0 for i in range(0,5)]),
-    'colsample_bytree' : hp.choice('colsample_bytree', [i/10.0 for i in range(3,10)]),     
-    'reg_alpha' : hp.choice('reg_alpha', [1e-5, 1e-2, 0.1, 1, 10, 100]), 
-    'reg_lambda' : hp.choice('reg_lambda', [1e-5, 1e-2, 0.1, 1, 10, 100])
-    }'''
-    # do hyperopt bayseyan optimization
-    # follow that video tutorial with the 
-    # robotic voice
     def __init__(self, data):
         self.data = data
         Model.instance_created = True
@@ -38,11 +27,6 @@ class Model:
         for column in self.data.columns:
             if self.data[column].dtype == "object":
                 self.data[column] = label_encoder.fit_transform(self.data[column])
-        #use this as reference for feature engineering
-        # and xgboost building:
-        # https://www.kaggle.com/code/yantxx/xgboost-binary-classifier-machine-failure
-        #do preprocessig on the data, if machine type 
-        # is not M or L, then make it other
 
         X = self.data.drop(["Machine failure", "UDI", "Product ID", "TWF", "HDF", "PWF", "OSF", "RNF", "Type"], axis=1)
         y = self.data["Machine failure"]
@@ -125,21 +109,8 @@ class Model:
         # Log the model artifact
         mlflow.sklearn.log_model(model, "model")
         return model'''
-    '''
-    def objective(self):
-        xgboost = XGBClassifier(seed=0, **params)
-        score = cross_val_score(estimator=xgboost, 
-                                X=X_train_transformed, 
-                                y=y_train, 
-                                cv=kfold, 
-                                scoring='recall', 
-                                n_jobs=-1).mean()
 
-        # Loss is negative score
-        loss = - score
 
-        # Dictionary with information for evaluation
-        return {'loss': loss, 'params': params, 'status': STATUS_OK}'''
     
     def logistic_model_result(self):
         if self.__class__.trained_or_not:
@@ -181,16 +152,6 @@ class Model:
         return model
     '''
     
-    #maybe anomaly detection models
-    #if not just go with random forest models
-    def random_forrest_model(self):
-        return "nothing"
-    
-    def model_version(self, model_name):
-        #this function should be called so that 
-        # look at the comment written on app.py
-        #above the if button_sub statement on what to do
-        return "noting currently"
 
 
 def result_return(data_input):
@@ -254,18 +215,7 @@ def result_return(data_input):
     
     
     
-    #want_test = pd.DataFrame([0,1])
-    
-    '''
-    print(want_test)
-    if want_test[0] == 0:
-        print("success")
-    elif want_test[1] == 0:
-        print("fail")
-    else :
-        print("what?")
-        
-    '''
+
 
     return predictions
 
@@ -295,11 +245,9 @@ if __name__ == "__main__":
     
     '''
     if the_answer[0] == want_test[0][0]:
-        print("success")
+        print("machine will fail")
     elif the_answer[0] == want_test[0][1]:
-        print("whatever") 
+        print("machine will continue to work") 
     else:
-        print("what happened?")
+        print("There is an error somewhere in the code")
     
-    #basically copy the entirety of 
-    #def predict_failure to this place
