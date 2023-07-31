@@ -1,5 +1,5 @@
 # predictive-maintainance-for-a-smart-factory
-This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon.
+This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon. Actually i think I'll get rid of mlflow in this, I'll create another project and use it there, in this one, hyperopt is good enough.
 
 
 ## Requirements

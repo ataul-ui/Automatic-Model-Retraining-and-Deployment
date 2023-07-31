@@ -10,13 +10,6 @@ import json
 
 app = FastAPI()
 
-def preprocess_data(json_data):
-    # Parse the JSON data
-    data = json.loads(json_data)
-    # Convert the data to a DataFrame
-    df = pd.DataFrame(data)
-    
-    return df
 
 @app.get("/")
 def root(data: dict):
