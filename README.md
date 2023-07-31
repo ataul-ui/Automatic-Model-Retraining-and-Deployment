@@ -1,5 +1,7 @@
 # predictive-maintainance-for-a-smart-factory
-This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon. Actually i think I'll get rid of mlflow in this, I'll create another project and use it there, in this one, hyperopt is good enough. For that new project I think I could use tensorflow, maybe. Or I could deploy it on azure cloud (use azure autoML). All of this needs to come together for me preparing for the databricks certification somehow
+This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon. Actually i think I'll get rid of mlflow in this, I'll create another project and use it there, in this one, hyperopt is good enough. For that new project I think I could use tensorflow, maybe. Or I could deploy it on azure cloud (use azure autoML). I don't need to use github for the autoML project I don't think. I'll just need to explain it in the article. 
+
+All of this needs to come together for me preparing for the databricks certification somehow
 
 
 ## Requirements
