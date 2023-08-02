@@ -1,5 +1,5 @@
 # predictive-maintainance-for-a-smart-factory
-This repository contains the code for a predictive maintaincence project. A detailed blog on this project is coming soon. 
+This repository contains the code for a predictive maintaincence project. A detailed blog of this project is available [here](https://medium.com/@ataul.akbar/how-to-build-a-predictive-maintainance-system-for-a-smart-factory-mlops-2b251434d7c3).
 
 
 
@@ -18,7 +18,7 @@ https://smart-factory-form.onrender.com
 ```
 
 ## Streamlit local app
-- To start the  app on your local machine, clone this repository then run these commands in your terminal:
+To start the  app on your local machine, clone this repository then run these commands in your terminal:
 ```bash
 conda activate your_environment_name
 conda install --file requirements.txt
