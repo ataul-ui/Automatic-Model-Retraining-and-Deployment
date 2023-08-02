@@ -31,9 +31,9 @@ def predict_failure(data: dict):
     
     want_test = pd.DataFrame([0,1])
     if the_answer[0] == want_test[0][0]:
-        return "machine will fail"
+        return "The result: machine will fail"
     elif the_answer[0] == want_test[0][1]:
-        return "machine will continue to work"
+        return "The result: machine will continue to work"
     else:
         return "There is an error somewhere in the code" 
     
