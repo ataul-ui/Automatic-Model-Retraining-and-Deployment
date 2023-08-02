@@ -12,7 +12,7 @@ Make sure you have conda installed. If you want to deploy this app on the web ma
 
 ## Streamlit web app
 
-To access the web deployed version, please create a pull request on production branch to put your username and date access in records.txt file; once the pull request has completed go to this link to access the site:
+To access the web deployed version, please follow this link (you will need to wait about a minute for render to build the website):
 ```
 https://smart-factory-form.onrender.com
 ```
