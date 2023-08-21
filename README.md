@@ -12,7 +12,7 @@ Make sure you have conda installed. If you want to deploy this app on the web ma
 
 ## Streamlit web app
 
-To access the web deployed version, please follow this link (you will need to wait about a minute for render to build the website):
+To access the web deployed version, please follow this link (you will need to wait about a minute for render to build the website) (in the future I plan to replace render with azure webapp service):
 ```
 https://smart-factory-form.onrender.com
 ```
