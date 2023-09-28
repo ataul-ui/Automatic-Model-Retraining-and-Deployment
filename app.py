@@ -46,12 +46,7 @@ if __name__ == "__main__":
     
     st.title("Predictive Maintainance Form")
     st.write("This is a Streamlit app integrated with FastAPI.")
-    # I can pass in the json message through here,
-    # st as the front end will give the message,
-    # then st will print the result given by the model (success) in the front end
-    # so the story is that a technician is measuring the machine and he
-    # is inputing choices from the drop down menu
-    # each new choice will be under a new header giving explaination
+
     
     device_type = st.radio("what is the device type?", ("M", "L", "H"))
     air_temp = st.selectbox("What is the air temp?", range(5, 501))
@@ -60,15 +55,10 @@ if __name__ == "__main__":
     torque = st.selectbox("What is the torque?", range(5, 501))
     tool_wear = st.selectbox("What is the tool wear?", range(5, 501))
     
-    #another question could be a st.radio:
-    #What model do you want to test this on, that option could be sent to 
-    #the testing.py, 
-    #actually the model training stuff will only be done in testing.py model class,
-    # but the model being called will only pass through def model_version()
+
     button_sub = st.button("submit")
     
     
-    # the if button will be on the last step
     if button_sub:
         json_message = {
             #"Type": [device_type],
@@ -79,10 +69,9 @@ if __name__ == "__main__":
             "Tool wear [min]": [tool_wear]
         }
         
-        #send_to_root = root(json_message)
+
         send_to_predict = predict_failure(json_message)
         print(send_to_predict)
-        #print(device_type)
         st.write(send_to_predict)
         
         retrain_the_model = 0
