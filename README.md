@@ -3,12 +3,12 @@ This repository contains the code for a predictive maintaincence project. A deta
 
 
 
+## Activity diagram
+![Alt text](./images/activity-diagram.png)
+
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
 
-
-## Activity diagram
-![Alt text](./images/activity-diagram.png)
 
 
 ## Streamlit web app
