@@ -8,6 +8,7 @@ Make sure you have conda installed. If you want to deploy this app on the web ma
 
 
 ## Activity diagram
+![Alt text](./images/activity-diagram.png)
 
 
 ## Streamlit web app
