@@ -6,16 +6,6 @@ This repository contains the code for a predictive maintaincence project. A deta
 ## Activity diagram
 ![Alt text](./images/2nd-fixed-image.png)
 
-** 
-On uml diagram instead of field technician it should be iot device. 
-
-And instead of "technician opens app" it should be "device establishes connection with app" 
-
-Rest can be the same I believe, except if there is a fail condition it should send a notification message to field technician. 
-
-And the whole process repeats until connection is lost. 
-**
-
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
 
