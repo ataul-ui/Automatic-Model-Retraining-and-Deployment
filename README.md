@@ -4,7 +4,7 @@ This repository contains the code for a predictive maintaincence project. A deta
 
 
 ## Activity diagram
-![Alt text](./images/activity-diagram.png)
+![Alt text](./images/2nd\image.png)
 
 ** 
 On uml diagram instead of field technician it should be iot device. 
