@@ -7,7 +7,7 @@ This repository contains the code for a predictive maintaincence project. A deta
 ![Alt text](./images/3rd-image.png)
 After completing the postman api producer certificate I'll update this project to have used more of postman for api testing
 
-Hmmm I can do github actions with postman cli for api testing. And post the API in postman public workspace <-- Actually don't bother with this, my postman certificate should be good enough. Actually I might be able to connect this repository with my postman workspace: https://www.youtube.com/watch?v=LQT_9-oasJg&t=320s (@ timestamp 4:04)
+Hmmm I can do github actions with postman cli for api testing. And post the API in postman public workspace <-- Actually don't bother with this, my postman certificate should be good enough.
 
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
