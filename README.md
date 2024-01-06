@@ -5,7 +5,7 @@ This repository contains the code for a predictive maintaincence project. A deta
 
 ## Activity diagram
 ![Alt text](./images/3rd-image.png)
-Sensor data can be simulated through AutoDesk Tandem
+After completing the postman api producer certificate I'll update this project to have used more of postman for api testing
 
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
