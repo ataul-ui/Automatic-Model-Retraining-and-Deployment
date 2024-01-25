@@ -7,7 +7,7 @@ This repository contains the code for a predictive maintaincence project. A deta
 ![Alt text](./images/3rd-image.png)
 After completing the postman api producer certificate I'll update this project to have used more of postman for api testing
 
-Hmmm I can do github actions with postman cli for api testing. And post the API in postman public workspace <-- Actually don't bother with this, my postman certificate should be good enough.
+I could comment out the ml stuff and instead put in a kafka broker that will eventually return the json requests, the timer for return requests in 5 seconds (aka kafka producer will ingest the messages and only release them from the kafka producer after 5 seconds), and the "ML part" will only be a simple python function that will always return failure.
 
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
