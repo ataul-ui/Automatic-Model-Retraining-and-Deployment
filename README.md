@@ -9,6 +9,8 @@ After completing the postman api producer certificate I'll update this project t
 
 I could comment out the ml stuff and instead put in a kafka broker that will eventually return the json requests, the timer for return requests in 5 seconds (aka kafka producer will ingest the messages and only release them from the kafka producer after 5 seconds), and the "ML part" will only be a simple python function that will always return failure.
 
+Also I think I can simulate the app using .net meadow, this way I can learn more about meadow and .net
+
 ## Requirements
 Make sure you have conda installed. If you want to deploy this app on the web make sure you have a Heroku or Render account.
 
